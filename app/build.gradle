@@ -56,6 +56,7 @@ android {
         viewBinding true
     }
     namespace 'com.example.forage'
+
 }
 
 dependencies {
@@ -89,5 +90,8 @@ dependencies {
     androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
     androidTestImplementation 'androidx.test:runner:1.5.1'
     androidTestUtil 'androidx.test:orchestrator:1.4.2'
-    debugImplementation "androidx.fragment:fragment-testing:1.5.4"
+    debugImplementation "androidx.fragment:fragment-testing:1.5.5"
+    // without this espresso tests 'hangs' with Logcat message, see:
+    //  https://github.com/android/android-test/issues/1589
+    debugImplementation "androidx.test:monitor:1.6.0"
 }
