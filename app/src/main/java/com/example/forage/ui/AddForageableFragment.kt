@@ -30,6 +30,7 @@ import com.example.forage.databinding.FragmentAddForageableBinding
 import com.example.forage.model.Forageable
 import com.example.forage.ui.viewmodel.ForageableViewModel
 import com.example.forage.ui.viewmodel.ForageableViewModelFactory
+import com.example.forage.util.GPSUtils
 
 
 /**
@@ -70,6 +71,10 @@ class AddForageableFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val id = navigationArgs.id
+        binding.getLocationButton.setOnClickListener{
+            GPSUtils.findDeviceLocation(requireActivity())
+            binding.locationAddressInput.setText("(${GPSUtils.latitude}, ${GPSUtils.longitude})")
+        }
         if (id > 0) {
 
             // TODO: Observe a Forageable that is retrieved by id, set the forageable variable,
